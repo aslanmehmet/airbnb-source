@@ -690,7 +690,7 @@ Index.getInitialProps = async ({ req }) => {
 }
 
 Index.getInitialProps = async ({ req }) => {
-  const res = await fetch('http://localhost:3000/api/testAirbnb')
+  const res = await fetch('https://ocr.sunucune.com/api/testAirbnb')
   const json = await res.json()
   console.log(json)
   return { translate: json.data }
