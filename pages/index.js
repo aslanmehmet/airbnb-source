@@ -36,7 +36,7 @@ const Index = (props) => (
 
     </Head>
 
-    <Preloader />
+    
 
     <section className="dir3-home-head">
       <div className="container">
