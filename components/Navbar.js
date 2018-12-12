@@ -3,12 +3,12 @@ import Fetch from 'isomorphic-unfetch';
 class Navbar extends React.Component{
     render(){
         return(
-            <section id="myID" className="bottomMenu hom3-top-menu">
+            <section id="myID" className={"bottomMenu hom3-top-menu"} >
             <div className="container top-search-main">
                 <div className="row">
                     <div className="ts-menu">
                         <div className="ts-menu-1">
-                            <a href="index-1.html"><img src="static/images/aff-logo.png" alt="" /> </a>
+                            <a href="index-1.html"><img src="../static/images/aff-logo.png" alt="" /> </a>
                         </div>
                         <div className="ts-menu-2"><a href="#" className="t-bb">{this.props.data.allpages} <i className="fa fa-angle-down" aria-hidden="true"></i></a>
                             <div className="cat-menu cat-menu-1">
@@ -124,8 +124,12 @@ class Navbar extends React.Component{
                         <div className="ts-menu-4">
                             <div className="v3-top-ri">
                                 <ul>
-                                    <li><a href="login.html" className="v3-menu-sign"><i className="fa fa-sign-in"></i> {this.props.data.a43} </a> </li>
-                                    <li><a href="db-listing-add.html" className="v3-add-bus"><i className="fa fa-plus" aria-hidden="true"></i> {this.props.data.a44} </a> </li>
+                                    <li><a href="login.html" className="v3-menu-sign"><i className="fa fa-sign-in"></i> {" "+ this.props.data.a43 + " "} </a> </li>
+                                    <li>
+                                        <a href="db-listing-add.html" className="v3-add-bus">
+                                            <i className="fa fa-plus" aria-hidden="true"></i> {this.props.data.a44 } 
+                                        </a> 
+                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -1,42 +1,17 @@
 import Fetch from 'isomorphic-unfetch';
-import Head from 'next/head';
 import json from '../data.json';
 import Preloader from '../components/Preloader';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import QuotsPopup from '../components/QuotsPopup';
+import Header from '../components/Header';
 
 const Index = (props) => (
-  <div>
-    <Head>
-      <title>World Best Local Directory Website template</title>
-      {/*<!-- META TAGS -->*/}
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      {/*<!-- FAV ICON(BROWSER TAB ICON) -->*/}
-      <link rel="shortcut icon" href="static/images/fav.ico" type="image/x-icon" />
-      {/*<!-- <!-- GOOGLE FONT --> -->*/}
-      <link href="https://fonts.googleapis.com/css?family=Poppins%7CQuicksand:500,700" rel="stylesheet" />
-      {/*<!-- <!-- FONTAWESOME ICONS --> -->*/}
-      <link rel="stylesheet" href="static/css/font-awesome.min.css" />
-      {/*<!-- <!-- ALL CSS FILES --> -->*/}
-      <link href="static/css/materialize.css" rel="stylesheet" />
-      <link href="static/css/style.css" rel="stylesheet" />
-      <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" />
-      {/*<!-- <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS --> -->*/}
-      <link href="static/css/responsive.css" rel="stylesheet" />
-      {/*
-              <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-              <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-              <!--[if lt IE 9]>
-              
-              <script src="static/js/html5shiv.js"></script>
-              <script src="static/js/respond.min.js"></script>*/}
-      {/*<![endif]-->*/}
+  <div> 
 
-    </Head>
-
-    
+    <Header>
+      <title>World Best Local Directory Website template</title>     
+    </Header>   
 
     <section className="dir3-home-head">
       <div className="container">
@@ -95,7 +70,7 @@ const Index = (props) => (
 
     </section>
 
-    <Navbar data={props.translate}/>
+    <Navbar data={props.translate} isHome="true"/>
 
     <section>
       <div className="land-full land-packages">
@@ -683,16 +658,9 @@ const Index = (props) => (
 );
 
 Index.getInitialProps = async ({ req }) => {
-  const res = await fetch('https://api.github.com/repos/zeit/next.js')
-  const json = await res.json()
-  console.log(json.stargazers_count)
-  return { stars: json.stargazers_count }
-}
-
-Index.getInitialProps = async ({ req }) => {
   const res = await fetch('https://ocr.sunucune.com/api/testAirbnb')
   const json = await res.json()
-  console.log(json)
+  //console.log(json)
   return { translate: json.data }
 }
 
