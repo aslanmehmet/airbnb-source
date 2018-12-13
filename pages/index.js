@@ -70,7 +70,7 @@ const Index = (props) => (
 
     </section>
 
-    <Navbar data={props.translate} isHome="true"/>
+    <Navbar data={props.translate} isHome={true}/>
 
     <section>
       <div className="land-full land-packages">

@@ -3,7 +3,8 @@ import Fetch from 'isomorphic-unfetch';
 class Navbar extends React.Component{
     render(){
         return(
-            <section id="myID" className={"bottomMenu hom3-top-menu"} >
+            //This page home active hom3-top-menu
+            <section id="myID" className={"bottomMenu " + (this.props.isHome ? 'hom3-top-menu' : "dir-il-top-fix")} >
             <div className="container top-search-main">
                 <div className="row">
                     <div className="ts-menu">
