@@ -204,7 +204,7 @@ const List = (props) => (
     </div>
 );
 List.getInitialProps = async ({ req }) => {
-    const res = await fetch('http://localhost:3001/api/testAirbnb')
+    const res = await fetch('https://ocr.sunucune.com/api/testAirbnb')
     const json = await res.json()
 
     //console.log(data);
