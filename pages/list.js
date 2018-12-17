@@ -121,27 +121,36 @@ const List = (props) => (
                                     {props.data.listItem.map((item, i) => {
                                         // Return the element. Also pass key     
                                         return (
-                                            <div className="home-list-pop list-spac" key={i}>
-                                                <div className="col-md-3 list-ser-img"> <img src="../static/images/services/s10.jpeg" alt="" /> </div>
-                                                <div className="col-md-9 home-list-pop-desc inn-list-pop-desc"> <a href="listing-details.html"><h3>{item.title}</h3></a>
-                                                    <h4>{item.subtitle}</h4>
-                                                    <p>{item.address}</p>
-                                                    <div className="list-number">
-                                                        <ul>
-                                                            <li><img src="../static/images/icon/phone.png" alt="" />{item.telno}</li>
-                                                            <li><img src="../static/images/icon/mail.png" alt="" /> {item.email}</li>
-                                                        </ul>
-                                                    </div> <span className="home-list-pop-rat">4.2</span>
-                                                    <div className="list-enqu-btn">
-                                                        <ul>
-                                                            <li><a href="#!"><i className="fa fa-star-o" aria-hidden="true"></i> Write Review</a> </li>
-                                                            <li><a href="#!"><i className="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
-                                                            <li><a href="#!"><i className="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
-                                                            <li><a href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i className="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
-                                                        </ul>
+                                            <Link as={`/list-detail`} href={`/post?title=${item.title}`}>
+                                                <div className="home-list-pop list-spac" key={i}>
+
+                                                    <div className="col-md-3 list-ser-img"> <img src="../static/images/services/s10.jpeg" alt="" /> </div>
+                                                    <div className="col-md-9 home-list-pop-desc inn-list-pop-desc">
+                                                        <h3>{item.title}</h3>
+                                                        <h4>{item.subtitle}</h4>
+                                                        <p>{item.address}</p>
+                                                        <div className="list-number">
+                                                            <ul>
+                                                                <li><img src="../static/images/icon/phone.png" alt="" />{item.telno}</li>
+                                                                <li><img src="../static/images/icon/mail.png" alt="" /> {item.email}</li>
+                                                            </ul>
+                                                        </div> <span className="home-list-pop-rat">4.2</span>
+                                                        <div className="list-enqu-btn">
+                                                            <ul>
+                                                                <li>
+                                                                    <Link as={`/${item.title}`} href={`/list-detail?title=${item.title}`}>
+                                                                        <a><i className="fa fa-star-o" aria-hidden="true"></i> Write Review</a>
+                                                                    </Link>
+                                                                </li>
+                                                                <li><a href="#!"><i className="fa fa-commenting-o" aria-hidden="true"></i> Send SMS</a> </li>
+                                                                <li><a href="#!"><i className="fa fa-phone" aria-hidden="true"></i> Call Now</a> </li>
+                                                                <li><a href="#!" data-dismiss="modal" data-toggle="modal" data-target="#list-quo"><i className="fa fa-usd" aria-hidden="true"></i> Get Quotes</a> </li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
+
                                                 </div>
-                                            </div>
+                                            </Link>
                                         );
                                     })}
                                 </div>

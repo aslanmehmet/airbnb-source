@@ -1,3 +1,9 @@
+
+
+{/* TODO: Layout */}
+
+
+
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Preloader from '../components/Preloader';
@@ -8,6 +14,7 @@ const Layout = (props) => (
 <div>
     <Header />
     <Navbar />
+    {props.children}
     <Footer />
     <QuotsPopup />
 </div>

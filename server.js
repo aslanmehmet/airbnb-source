@@ -1,14 +1,48 @@
+const express = require('express')
+const next = require('next')
 
-const  next  =  require("next")
-const  routes  =  require("./routes")
-const  PORT  =  parseInt(process.env.PORT, 10) ||  3000
-const  app  =  next({ dev:  process.env.NODE_ENV  !==  "production" })
-const  handler  =  routes.getRequestHandler(app)
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
+const { parse } = require('url')
 
-const  express  =  require("express")
+app.prepare()
+  .then(() => {
+    const server = express()
 
-app.prepare().then(() => {
-  express()
-  .use(handler)
-  .listen(PORT, () =>  process.stdout.write(`Point your browser to: http://localhost:${PORT}\n`))
-})
+
+    server.get('/:title', (req, res) => {
+      const parsedUrl = parse(req.url, true)
+      const { pathname, query } = parsedUrl
+      if (pathname === '/list') {
+        console.log("List")
+        const actualPage = '/list'
+        const queryParams = { title: req.params.title }
+        app.render(req, res, actualPage, queryParams)
+      } else if(pathname === '/'){
+        console.log("Home");
+        const actualPage = '/list'
+        const queryParams = { title: req.params.title }
+        app.render(req, res, actualPage, queryParams)
+      }else {
+        console.log("heyyy")
+        const actualPage = '/list-detail'
+        const queryParams = { title: req.params.title }
+        app.render(req, res, actualPage, queryParams)
+      }
+
+    })
+
+    server.get('*', (req, res) => {
+      return handle(req, res)
+    })
+
+    server.listen(3000, (err) => {
+      if (err) throw err
+      console.log('> Ready on http://localhost:3000')
+    })
+  })
+  .catch((ex) => {
+    console.error(ex.stack)
+    process.exit(1)
+  })
